@@ -4,28 +4,29 @@ from dotenv import load_dotenv
 import os
 from utils.commands import set_commands
 
-
 load_dotenv()
 
 token = os.getenv('TOKEN')
 admin_id = os.getenv("ADMIN_ID")
+my_secret = os.environ['TOKEN']
+my_secret = os.environ['ADMIN_ID']
 
 bot = Bot(token=token, parse_mode='HTML')
 dp = Dispatcher()
 
 
 async def start_bot(bot: Bot):
-    await bot.send_message(admin_id, text='Я запустил бота')
+  await bot.send_message(admin_id, text='Я запустил бота')
 
-    dp.startup.register(start_bot)
+  dp.startup.register(start_bot)
 
 
 async def start():
-    await  set_commands(bot)
-    try:
-        await dp.start_polling(bot, skip_updates=True)
-    finally:
-        await bot.session.close()
+  await set_commands(bot)
+  try:
+    await dp.start_polling(bot, skip_updates=True)
+  finally:
+    await bot.session.close()
 
-        if __name__ == '__main__':
-            asyncio.run(start)
+    if __name__ == '__main__':
+      asyncio.run(start)
