@@ -6,8 +6,8 @@ from utils.commands import set_commands
 
 load_dotenv()
 
-token = os.getenv('TOKEN')
-admin_id = os.getenv("ADMIN_ID")
+# token = os.getenv('TOKEN')
+# admin_id = os.getenv("ADMIN_ID")
 my_secret = os.environ['TOKEN']
 my_secret = os.environ['ADMIN_ID']
 
